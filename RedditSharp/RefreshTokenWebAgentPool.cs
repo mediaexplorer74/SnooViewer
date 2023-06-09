@@ -46,6 +46,7 @@ namespace RedditSharp
             ClientSecret = clientSecret;
             RedirectURI = redirectURI;
             SlidingExpirationMinutes = 15;
+            //DefaultUserAgent = "SnooViewer/1 (sahaRatul)";
         }
 
         /// <summary>
@@ -81,7 +82,8 @@ namespace RedditSharp
                         activeAgentsCache.Set(poolEnt.WebAgentID, agent, opts);
                         return agent;
                     }
-                    finally {
+                    finally 
+                    {
                         cacheLock.Release();
                     }
                 }

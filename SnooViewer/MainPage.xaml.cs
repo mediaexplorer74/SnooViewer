@@ -26,13 +26,16 @@ namespace SnooViewer
             this.InitializeComponent();
             if ((string)localSettings.Values["refresh_token"] == null)
             {
-                navBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                //RnD
+                //navBar.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 GenerateToken();
             }
             else
             {
                 RefreshToken();
-                loginView.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
+                //RnD
+                //loginView.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
         }
 
@@ -100,6 +103,11 @@ namespace SnooViewer
                 pageType = typeof(Pages.UserPage);
                 contentFrame.NavigateToType(pageType, null, navOptions);
             }
+        }
+
+        private void PageRefresh(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            loginView.Refresh();
         }
     }
 }
