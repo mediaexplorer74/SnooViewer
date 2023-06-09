@@ -2,6 +2,7 @@
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>latest</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{EB7FF1B4-0E24-4C4F-967D-E48B79021DD6}</ProjectGuid>
@@ -12,11 +13,14 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <PackageCertificateThumbprint>72A332C2FC137994B56852456275760E1C70F8FF</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>SnooViewer_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -119,8 +123,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants\Constants.cs" />
+    <Compile Include="Converters\BaseTimestampConverter.cs" />
     <Compile Include="Converters\DepthToMarginConverter.cs" />
+    <Compile Include="Converters\EmptyStringToListConverter.cs" />
+    <Compile Include="Converters\LocalTimestampConverter.cs" />
+    <Compile Include="Converters\UtcTimestampConverter.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="Helpers\ApiJsonContext.cs" />
     <Compile Include="Helpers\IncrementalLoadingCollection.cs" />
     <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="Helpers\SubredditPostSource.cs" />
@@ -128,8 +137,24 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\AuthViewModel.cs" />
+    <Compile Include="Models\ApiObjectWithKind.cs" />
+    <Compile Include="Models\CommentContributionSettings.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\ImageContainer.cs" />
+    <Compile Include="Models\Listing{T}.cs" />
+    <Compile Include="Models\TokenInfo.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Interfaces\ICreated.cs" />
+    <Compile Include="Models\Interfaces\IPostReplyable.cs" />
+    <Compile Include="Models\Interfaces\IVotable.cs" />
+    <Compile Include="Models\Interfaces\Thing{T}.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\More.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\SortCategory.cs" />
+    <Compile Include="Models\Subreddit.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserSubreddit.cs" />
     <Compile Include="Pages\PostPage.xaml.cs">
       <DependentUpon>PostPage.xaml</DependentUpon>
     </Compile>
@@ -197,7 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.8</Version>
+      <Version>6.2.14</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
       <Version>5.1.1</Version>
@@ -205,12 +230,18 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
     </PackageReference>
+    <PackageReference Include="System.Text.Json">
+      <Version>7.0.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RedditSharp\RedditSharp.csproj">
       <Project>{4178260e-91ca-4fc7-a704-aec7527830c4}</Project>
       <Name>RedditSharp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SnooViewer_TemporaryKey.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -2,7 +2,7 @@
 
 namespace SnooViewer.Models
 {
-    internal class SortCategory
+    public class SortCategory
     {
         public string SortName { get; set; }
         public Subreddit.Sort SortValue { get; set; }
