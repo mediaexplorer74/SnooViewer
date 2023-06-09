@@ -2,7 +2,7 @@
 (My) another attempt to continue making a uwp reddit client.
 I choosed SnooViewer as codebase. I noticed that a few years ago that project warked normally (see that old, not mine, screenshot):
 
-![](/Images/Capture.png)
+![](/Images/capture.png)
 
 ## Current Status 
 - Min. Win. os build = 15063
