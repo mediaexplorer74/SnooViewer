@@ -108,7 +108,7 @@ namespace RedditSharp
         public Reddit(RateLimitMode limitMode, bool useSsl = true)
             : this(useSsl)
         {
-            DefaultWebAgent.DefaultUserAgent = "";
+            DefaultWebAgent.DefaultUserAgent = "SnooViewer/1 (sahaRatul)";
             DefaultWebAgent.DefaultRateLimiter.Mode = limitMode;
             DefaultWebAgent.RootDomain = "www.reddit.com";
         }

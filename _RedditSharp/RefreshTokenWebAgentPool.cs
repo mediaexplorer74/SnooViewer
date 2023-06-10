@@ -46,7 +46,7 @@ namespace RedditSharp
             ClientSecret = clientSecret;
             RedirectURI = redirectURI;
             SlidingExpirationMinutes = 15;
-            DefaultUserAgent = "SnooViewer2/1.0 by mediaexplorer74";
+            //DefaultUserAgent = "SnooViewer/1 (sahaRatul)";
         }
 
         /// <summary>
