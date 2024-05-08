@@ -1,6 +1,6 @@
 # SnooViewer
 (My) another attempt to continue making a uwp reddit client.
-I choosed SnooViewer as codebase. I noticed that a few years ago that project warked normally (see that old, not mine, screenshot):
+I choosed SnooViewer as codebase. I noticed that a few years ago that project "did his work" normally (see that old, not mine, screenshot):
 
 ![](/Images/capture.png)
 
